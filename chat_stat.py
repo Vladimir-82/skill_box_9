@@ -43,11 +43,15 @@
 
 import os
 LETTERS = 'а б в г д е ж з и к л м н о п р с т у ф к ц ч ш щ ъ ь э ю я'.split()
+letters_list = []
 file = 'kr'
-file = open(file, 'r', encoding='utf8')
+file = open(file, 'r+', encoding='utf8')
 file_content = file.read()
-for letter in LETTERS:
-    if letter in file_content:
-        print(f'{letter:*^3}, {file_content.count(letter):*^10}')
-# if 'Юранд' in file_content:
-#     print(file_content.count('Юранд'))
+for letter in file_content:
+    if letter.isalpha():
+        if letter not in letters_list:
+            letters_list.append(letter)
+print('+'+14*'-'+'+')
+for letter in letters_list:
+    print(f'{letter:^8}{file_content.count(letter):^8}')
+file.close()
