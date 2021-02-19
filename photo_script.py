@@ -35,8 +35,8 @@ import os, time, shutil
 # Требования к коду: он должен быть готовым к расширению функциональности. Делать сразу на классах.
 
 # TODO здесь ваш код
-path = 'e:\хлам\python\photo_py'
-path_exit = 'e:\хлам\python\photo_py_exit'
+path = '/home/vladimir/Документы/photo_py'
+path_exit = '/home/vladimir/Документы/photo_py_exit'
 path_normalized = os.path.normpath(path)
 # dir_exit = os.makedirs(path_exit)
 new_dir_names_list = []
@@ -47,11 +47,13 @@ for dirpath, filepath, filenames in os.walk(path_normalized):
         file_time = time.gmtime(secs)
         new_dir_name = file_time[0]
         new_dir_names_list.append(new_dir_name)
-        new_dir_path = path_exit + '\\' + str(new_dir_name)
+
+
+        new_dir_path = path_exit + '/' + str(new_dir_name)
 
         os.makedirs(new_dir_path)
-        # print(full_file_path, file_time)
-        shutil.copy2(full_file_path, new_dir_path)
+
+        # shutil.copy2(full_file_path, new_dir_path)
 
 
 # Усложненное задание (делать по желанию)
