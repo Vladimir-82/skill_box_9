@@ -38,22 +38,17 @@ import os, time, shutil
 path = '/home/vladimir/Документы/photo_py'
 path_exit = '/home/vladimir/Документы/photo_py_exit'
 path_normalized = os.path.normpath(path)
-# dir_exit = os.makedirs(path_exit)
-new_dir_names_list = []
 for dirpath, filepath, filenames in os.walk(path_normalized):
     for file in filenames:
         full_file_path = os.path.join(dirpath, file)
         secs = os.path.getmtime(full_file_path)
         file_time = time.gmtime(secs)
-        new_dir_name = file_time[0]
-        new_dir_names_list.append(new_dir_name)
-
-
-        new_dir_path = path_exit + '/' + str(new_dir_name)
-
-        os.makedirs(new_dir_path)
-
-        # shutil.copy2(full_file_path, new_dir_path)
+        year = file_time[0]
+        month = file_time[1]
+        new_dir_path = path_exit + '/' + str(year) + '/' + str(month)
+        if os.path.isdir(new_dir_path) == False:
+            os.makedirs(new_dir_path)
+        shutil.copy2(full_file_path, new_dir_path)
 
 
 # Усложненное задание (делать по желанию)
