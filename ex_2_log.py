@@ -20,7 +20,12 @@
 # Требования к коду: он должен быть готовым к расширению функциональности. Делать сразу на классах.
 
 # TODO здесь ваш код
-
+file_name = 'logfile.txt'
+file = open(file_name, mode='r', encoding='utf8')
+for line in file.readlines():
+    if '19:37:47' in line:
+        print(line)
+file.close()
 # После выполнения первого этапа нужно сделать группировку событий
 #  - по часам
 #  - по месяцу
