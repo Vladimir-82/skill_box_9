@@ -45,8 +45,9 @@ for dirpath, filepath, filenames in os.walk(path_normalized):
         file_time = time.gmtime(secs)
         year = file_time[0]
         month = file_time[1]
-        new_dir_path = path_exit + '/' + str(year) + '/' + str(month)
-        if os.path.isdir(new_dir_path) == False:
+        # new_dir_path = path_exit + '/' + str(year) + '/' + str(month)
+        new_dir_path = '/'.join((path_exit, str(year), str(month)))
+        if not os.path.isdir(new_dir_path):
             os.makedirs(new_dir_path)
         shutil.copy2(full_file_path, new_dir_path)
 

@@ -21,13 +21,21 @@
 
 # TODO здесь ваш код
 file_name = 'log_file.txt'
-# file_exit=''
+file_exit='file_exit.txt'
 file = open(file_name, mode='r', encoding='utf8')
 file_exit = open(file_exit, mode='w', encoding='utf8')
-for line in file.readlines():
-    if line[-3::] == 'NOK':
-        file_exit.write(line)
 
+content_list = []
+
+for line in file.readlines():
+    if 'NOK' in line:
+        content = line[0:17:] + ']'
+        content_list.append(content)
+
+
+for content in sorted(set(content_list)):
+    file_exit.write((content) + ' ' + str(content_list.count(content)))
+    file_exit.write('\n')
 file.close()
 file_exit.close()
 # После выполнения первого этапа нужно сделать группировку событий
