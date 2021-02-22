@@ -35,8 +35,8 @@ import os, time, shutil
 # Требования к коду: он должен быть готовым к расширению функциональности. Делать сразу на классах.
 
 # TODO здесь ваш код
-path = '/home/vladimir/Документы/photo_py'
-path_exit = '/home/vladimir/Документы/photo_py_exit'
+path = 'e:/хлам/python/photo_py'
+path_exit = 'e:/хлам/python/photo_py_exit'
 path_normalized = os.path.normpath(path)
 for dirpath, filepath, filenames in os.walk(path_normalized):
     for file in filenames:
